@@ -22,5 +22,18 @@ def self.new_by_name(song_name)
   song
 end
 
-def self.find_by_name
+def self.create_by_name(song_name)
+  song = self.create
+  song.name = song_name
+  song
+end
+
+def self.find_by_name(song_name)
+  self.all.detect{|song| song.name == song_name}
+end
+
+def self.find_or_create_by_name(song_name)
+  self.find_by_name(song_name) || self.create_by_name(song_name)
+  end
+  
 end
